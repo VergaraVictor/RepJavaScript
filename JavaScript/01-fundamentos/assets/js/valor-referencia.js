@@ -10,7 +10,7 @@ console.log({ a, b });
 
 
 let juan = { nombre: 'Juan' };
-let ana = {juan};
+let ana = { ...juan };
 ana.nombre = 'Ana';
 
 console.log({ juan, ana })
@@ -24,3 +24,8 @@ let peter = { nombre: 'Peter'};
 let tony = cambiaNombre( peter );
 
 console.log({ peter, tony });
+
+// Arreglos
+const frutas = ['Manzana', 'Pera', 'Piña'];
+
+const otrasFrutas = frutas;
