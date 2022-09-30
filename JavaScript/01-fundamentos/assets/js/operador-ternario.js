@@ -11,22 +11,23 @@ const horaActual = 11;
 let horaApertura;
 let mensaje; // está abierto, Está cerrado, hoy abrimos a las xx
 
-if (dia === 0 || dia === 6) {
+// if (dia === 0 || dia === 6) {
+// if ( [0,6].includes( dia )){
+//     console.log('Fin de semana');
+//     horaApertura = 9;
+// } else {
+//     console.log('Día de semana');
+//     horaApertura = 11;
+// }
+horaApertura = ([0, 6].includes(dia)) ? 9 : 11;  
 
-    console.log('Fin de semana');
-    horaApertura = 9;
-} else {
-    console.log('Día de semana');
-    horaApertura = 11;
-}
+// if (horaActual >= horaApertura) {
+//     mensaje = 'Está abierto';
+// } else {
+//     mensaje = `Está cerrado, hoy abrimos a las ${ horaApertura }`;
+// }
 
-
-if (horaActual >= horaApertura) {
-    mensaje = 'Está abierto';
-} else {
-    mensaje = `Está cerrado, hoy abrimos a las ${ horaApertura }`;
-}
-
+mensaje = (horaActual >= horaApertura) ? 'esta abierto' : `Está cerrado, hoy abrimos a las ${horaApertura }`;
 
 
 console.log({ horaApertura, mensaje });
