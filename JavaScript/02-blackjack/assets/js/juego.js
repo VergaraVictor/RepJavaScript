@@ -8,6 +8,19 @@
 let deck = [];
 const tipos = ['C', 'D', 'H', 'S'];
 const especiales = ['A', 'J', 'Q', 'K'];
+
+let puntosjugador = 0,
+    puntosComputadora = 0;
+
+
+// Referencias del HTML
+const btnPedir = document.querySelector('#btnPedir');
+
+const divCartasjugador     = document.querySelector('#jugador-cartas');
+const divCartasComputadora = document.querySelector('#computadora-cartas');
+
+const puntosHTML =document.querySelectorAll('small');
+
 // esta funcion crea un nuevo deck o baraja
 const crearDeck = () => {
 
@@ -38,11 +51,7 @@ const pedirCarta = () => {
         throw 'No hay cartas en el deck';
         // console.log('????'); en este caswo no es posible ver este consol log por el trhow
     }
-
     const carta = deck.pop();
-
-    console.log(deck);
-    console.log(carta); // carta debe de ser de la baraja
     return carta;
 }
 
@@ -72,5 +81,56 @@ const valorCarta = ( carta ) => {
 
 }
 
-const valor = valorCarta( pedirCarta() );
-console.log({ valor });
+// Turno de la computadora
+const turnoComputadora = ( puntosMinimos ) => {
+
+    // do {
+
+        const carta = pedirCarta();
+
+        puntosComputadora = puntosComputadora + valorCarta( carta );
+        puntosHTML[1].innerText = puntosComputadora;
+    
+        //  <img class="carta" src="assets/cartas/2C.png">
+    
+        const imgCarta = document.createElement('img');
+        imgCarta.src = `assets/cartas/${ carta }.png`; //3H, JD
+        imgCarta.classList.add('carta');
+        divCartasComputadora.append( imgCarta );
+    
+
+    // } while();
+}
+
+// Eventos
+
+btnPedir.addEventListener('click', () => {
+
+    const carta = pedirCarta();
+
+    puntosjugador = puntosjugador + valorCarta( carta );
+
+    console.log( puntosjugador );
+    puntosHTML[0].innerText = puntosjugador;
+
+    //  <img class="carta" src="assets/cartas/2C.png">
+
+    const imgCarta = document.createElement('img');
+    imgCarta.src = `assets/cartas/${ carta }.png`; //3H, JD
+    imgCarta.classList.add('carta');
+    divCartasjugador.append( imgCarta );
+
+    if ( puntosjugador > 21 ){
+        console.log('Lo siento mucho, perdiste');
+        btnPedir.disabled = true;
+    } else if ( puntosjugador === 21 ) {
+        console.warn('21, genial!');
+        btnPedir.disabled = true;
+    }
+
+});
+
+
+
+// TODO: Borrar
+turnoComputadora( 12 );
