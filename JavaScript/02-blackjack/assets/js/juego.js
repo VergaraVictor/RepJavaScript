@@ -84,7 +84,7 @@ const valorCarta = ( carta ) => {
 // Turno de la computadora
 const turnoComputadora = ( puntosMinimos ) => {
 
-    // do {
+    do {
 
         const carta = pedirCarta();
 
@@ -98,8 +98,11 @@ const turnoComputadora = ( puntosMinimos ) => {
         imgCarta.classList.add('carta');
         divCartasComputadora.append( imgCarta );
     
+        if( puntosMinimos > 21 ) {
+            break;
+        }
 
-    // } while();
+     } while( puntosComputadora < puntosMinimos && (puntosMinimos <= 21 ) );
 }
 
 // Eventos
@@ -123,14 +126,18 @@ btnPedir.addEventListener('click', () => {
     if ( puntosjugador > 21 ){
         console.log('Lo siento mucho, perdiste');
         btnPedir.disabled = true;
+        turnoComputadora(puntosjugador);
+
     } else if ( puntosjugador === 21 ) {
         console.warn('21, genial!');
         btnPedir.disabled = true;
+        turnoComputadora(puntosjugador);
     }
 
 });
 
 
 
-// TODO: Borrar
-turnoComputadora( 12 );
+// Esto se reallizo para simular un jugador // TODO: Borrar
+// console.log( 16 );
+// turnoComputadora( 16 );
