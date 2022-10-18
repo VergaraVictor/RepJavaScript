@@ -15,6 +15,7 @@ let puntosjugador = 0,
 
 // Referencias del HTML
 const btnPedir = document.querySelector('#btnPedir');
+const btnDetener = document.querySelector('#btnDetener');
 
 const divCartasjugador     = document.querySelector('#jugador-cartas');
 const divCartasComputadora = document.querySelector('#computadora-cartas');
@@ -103,6 +104,14 @@ const turnoComputadora = ( puntosMinimos ) => {
         }
 
      } while( puntosComputadora < puntosMinimos && (puntosMinimos <= 21 ) );
+
+     if( puntosComputadora === puntosMinimos ) {
+        alert('Nadie gana :(');
+     } else if ( puntosMinimos > 21 ) {
+        alert('Computadora gana')
+     } else if( puntosComputadora > 21 ) {
+        alert('Jugador Gana');
+     }
 }
 
 // Eventos
@@ -126,17 +135,27 @@ btnPedir.addEventListener('click', () => {
     if ( puntosjugador > 21 ){
         console.log('Lo siento mucho, perdiste');
         btnPedir.disabled = true;
+        btnDetener.disabled = true;
         turnoComputadora(puntosjugador);
 
     } else if ( puntosjugador === 21 ) {
         console.warn('21, genial!');
         btnPedir.disabled = true;
+        btnDetener.disabled = true;
         turnoComputadora(puntosjugador);
     }
 
 });
 
 
+btnDetener.addEventListener('click', () => {
+    btnPedir.disabled   = true;
+    btnDetener.disabled = true;
+
+    turnoComputadora( puntosjugador );
+
+
+})
 
 // Esto se reallizo para simular un jugador // TODO: Borrar
 // console.log( 16 );
