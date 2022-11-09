@@ -1,6 +1,4 @@
-
-
-class Persona{
+class Persona {
 
     static _conteo = 0;
     static get conteo() {
@@ -11,24 +9,24 @@ class Persona{
         console.log(this.nombre); // undefined
         console.log('Hola a todos, soy un método stático');
     }
-    
+
     nombre = '';
     codigo = '';
-    frase  = '';
+    frase = '';
     comida = '';
 
     constructor(nombre = 'Sin nombre', codigo = 'Sin codigo', frase = 'Sin frase') {
-        
+
         this.nombre = nombre;
         this.codigo = codigo;
         this.frase = frase;
-        
+
         Persona._conteo++;
     }
-    
+
     // Set es para establecer un valor and Get para recuperar un valor
 
-    set setComidaFavorita( comida ) {
+    set setComidaFavorita(comida) {
         this.comida = comida.toUpperCase();
     }
     get getComidaFavorita() {
@@ -45,30 +43,30 @@ class Persona{
         //se puede llamar un metodo dentro de otro
         this.quienSoy();
         console.log(`${this.codigo} dice: ${this.frase}`);
-        
+
     }
 }
 
+class Heroe extends Persona{
 
-const spiderman = new Persona('Peter Parker', 'Spiderman', 'Soy tu amigable vecino Spiderman');
-const ironman   = new Persona('Tony Stark', 'Ironman', 'Yo soy Ironman');
-// console.log(spiderman);
-// console.log(ironman);
-//para visualizar le metodo, se neceita el () para ejecutar el metodo.
-spiderman.miFrase();
-// ironman.miFrase();
+    clan = 'sin clan';
 
-spiderman.setComidaFavorita = 'El pie de cereza de la tía may'
-// spiderman.comida = 'Duende Verde';
+    constructor(nombre, codigo, frase) {
+        // regla si se va a utilizar this se debe colocar primero super() del primer constructor        
+        super(nombre, codigo, frase);
 
-// console.log(spiderman.getComidaFavorita);
+        this.clan = 'Los Avengers';
+    }
 
-// console.log( spiderman )
-// Persona._conteo = 2;
-console.log('Conteo stático', Persona._conteo);
-console.log(Persona.conteo);
-Persona.mensaje();
+    quienSoy() {
+        console.log(`Soy ${this.nombre}, ${this.clan}`);
+        super.quienSoy();
+    }
 
-Persona.propiedadExterna = 'Hola Mundo';
-console.log(Persona.propiedadExterna);
-console.log(Persona);
+}
+
+const spiderman = new Heroe('Peter Parker', 'Spiderman', 'Soy tu amigable vecino Spiderman');
+// const spiderman = new Heroe();
+
+console.log(spiderman);
+spiderman.quienSoy();
