@@ -6,7 +6,7 @@ module.exports = {
     mode: "development", 
 
     output: {
-
+        clean: true
     },
     
     module: {
@@ -26,7 +26,8 @@ module.exports = {
     plugins: [
         new HtmlWebpack({
             title: 'Mi Webpack App',
-            filename: 'index.html'
+            // filename: 'index.html',
+            template: './src/index.html'
         })
     ],
 }
