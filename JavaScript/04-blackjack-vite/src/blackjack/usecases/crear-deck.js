@@ -1,6 +1,6 @@
 import _ from 'underscore';
 
-
+export const miNombre = 'Victor';
 
 export const crearDeck = (tiposDeCarta, tiposEspeciales) => {
     
@@ -12,7 +12,7 @@ export const crearDeck = (tiposDeCarta, tiposEspeciales) => {
         }
     }
 
-    for (let tipo of tipos) {
+    for (let tipo of tiposDeCarta) {
         for (let esp of tiposEspeciales) {
             deck.push(esp + tipo);
         }
@@ -22,3 +22,5 @@ export const crearDeck = (tiposDeCarta, tiposEspeciales) => {
 
     return deck;
 }
+
+// export default crearDeck;
