@@ -1,9 +1,10 @@
 import _ from 'underscore';
 // import crearDeck from './usecases/crear-deck';
 // import { crearDeck as crearNuevoDeck } from './usecases/crear-deck';
-import { crearDeck } from './usecases/crear-deck';
-import { pedirCarta } from './usecases/pedir-carta';
-import { valorCarta } from './usecases/valor-carta';
+// import { crearDeck } from './usecases/crear-deck';
+// import { pedirCarta } from './usecases/pedir-carta';
+// import { valorCarta } from './usecases/valor-carta';
+import { crearDeck, pedirCarta, valorCarta, turnoComputadora } from './usecases';
 
 /**
  * 2C = Two of Clubs
@@ -59,13 +60,13 @@ btnPedir.addEventListener('click', () => {
         console.warn('Lo siento mucho, perdiste');
         btnPedir.disabled = true;
         btnDetener.disabled = true;
-        turnoComputadora(puntosJugador);
+        turnoComputadora(puntosJugador, puntosHTML[1], divCartasComputadora, deck );
 
     } else if (puntosJugador === 21) {
         console.warn('21, genial!');
         btnPedir.disabled = true;
         btnDetener.disabled = true;
-        turnoComputadora(puntosJugador);
+        turnoComputadora(puntosJugador, puntosHTML[1], divCartasComputadora, deck);
     }
 
 });
@@ -75,7 +76,7 @@ btnDetener.addEventListener('click', () => {
     btnPedir.disabled = true;
     btnDetener.disabled = true;
 
-    turnoComputadora(puntosJugador);
+    turnoComputadora(puntosJugador, puntosHTML[1], divCartasComputadora, deck);
 });
 
 btnNuevo.addEventListener('click', () => {

@@ -1,14 +1,17 @@
-import { pedirCarta } from "./usecases/pedir-carta";
+import { pedirCarta, valorCarta } from './';
 
-// turno de la computadora
-//**
+/**
  * 
  * @param {Number} puntosMinimos puntos minimos que la computadora necesita para ganar.
+ * @param {HTMLElement} elemento HTML para mostrar los puntos
+ * @param {HTMLElement} divCartasComputadora HTML para mostrar las cartas
  * @param {Array<String>} deck
  */
-export const turnoComputadora = (puntosMinimos, deck ) => {
+export const turnoComputadora = (puntosMinimos, puntosHTML, divCartasComputadora, deck = [] ) => {
     if (!puntosMinimos) throw new Error('Puntos mínimos son necesario');
-    if (!deck) throw new Error('El Deck es necesario');
+    if (!puntosHTML) throw new Error('Argumento puntosHTML es necesario');
+
+    let puntosComputadora = 0;
 
     do {
         const carta = pedirCarta(deck);
