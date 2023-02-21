@@ -1,4 +1,4 @@
-import { pedirCarta, valorCarta } from './';
+import { pedirCarta, valorCarta } from '.';
 
 /**
  * 
