@@ -6,6 +6,7 @@ const elementIDs = {
     clearCompletedButton: '.clear-completed',
     TodoList: '.todo-list',
     NewTodoInput: '#new-todo-input',
+    TodoFilters: '.filtro',
 }
 
 /**
@@ -32,6 +33,7 @@ export const App = ( elementId ) => {
     const newDescriptionInput = document.querySelector( elementIDs.NewTodoInput );
     const todoListUL = document.querySelector( elementIDs.TodoList );
     const clearCompletedButton = document.querySelector( elementIDs.clearCompletedButton );
+    const FiltersLIs = document.querySelectorAll( elementIDs.TodoFilters );
 
     // Listeners
     newDescriptionInput.addEventListener('keyup', ( event ) => {
@@ -61,6 +63,15 @@ export const App = ( elementId ) => {
     clearCompletedButton.addEventListener( 'click', () => {
         todoStore.deleteCompleted();
         displayTodos();
+    });
+
+    FiltersLIs.forEach( element => {
+        element.addEventListener('click', (element) => {
+            FiltersLIs.forEach( el => el.classList.remove('selected') );
+            element.target.classList.add('selected');
+        });
+
+
     });
 
 }
