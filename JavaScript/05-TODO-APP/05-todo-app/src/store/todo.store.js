@@ -20,12 +20,16 @@ const state = {
 }
 
 const initStore = () => {
-    console.log(state);
+    loadStore();
     console.log('initStore 🥑');
 }
 
 const loadStore = () => {
-    throw new Error('Not implemented');
+    if( !localStorage.getItem('state') ) return;
+
+    const { todos = [], filter = Filters.All } = JSON.parse( localStorage.getItem('state') );
+    state.todos = todos;
+    state.filter = filter;
 }
 
 const saveStateToLocalStorage = () => {
