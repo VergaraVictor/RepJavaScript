@@ -1,6 +1,7 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
+import { environmentsComponent } from './src/concepts/01-environments';
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -18,3 +19,7 @@ document.querySelector('#app').innerHTML = `
   </div>
 `;
 
+const element = document.querySelector('.card');
+
+
+environmentsComponent( element );
