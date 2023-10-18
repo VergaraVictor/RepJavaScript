@@ -6,8 +6,9 @@ import { heroes } from "../data/heroes"
  */
 export const callbacksComponent = ( element ) => {
 
-    const id = '5d86371fd55e2e2a30fe1ccb1';
-    findHeroe( id, (error, hero) => {
+    const id1 = '5d86371fd55e2e2a30fe1ccb1';
+    const id2 = '5d86371fd55e2e2a30fe1ccb2';
+    findHeroe( id1, (error, hero1) => {
 
         // element.innerHTML = hero?.name || 'No hay heroe';
 
@@ -16,7 +17,12 @@ export const callbacksComponent = ( element ) => {
             return;            
         }
 
-        element.innerHTML = hero.name;
+        findHeroe( id2, (error, hero2) => {
+
+            element.innerHTML = `${ hero1.name } / ${ hero2.name }`;
+        })
+
+        
     });    
     
 }
