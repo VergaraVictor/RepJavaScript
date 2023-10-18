@@ -24,4 +24,5 @@ const element = document.querySelector('.card');
 
 
 // environmentsComponent( element );
-callbacksComponent( element );
+// callbacksComponent( element );
+promiseComponent( element );
