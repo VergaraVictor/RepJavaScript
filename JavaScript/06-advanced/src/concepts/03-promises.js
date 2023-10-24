@@ -28,9 +28,14 @@ export const promiseComponent = ( element ) => {
     
 
     const id1 = '5d86371f25a058e5b1c8a65e';
-    const id2 = '5d86371f233c9f2425f16916';
+    const id2 = '5d86371f97c29d020f1e1f6d';
     
-    Promise.all([])
+    Promise.all([
+        findHero(id1),
+        findHero(id2),
+    ])
+    .then( ([hero1, hero2]) => renderTwoHeroes( hero1, hero2) )
+    .catch( renderError );
 
 
     //! Forma 2
