@@ -20,8 +20,20 @@ const fetchQuote = async() => {
 export const BreakingbadApp = async( element ) => {
     document.querySelector('#app-title').innerHTML = 'Breakingbad App';
     element.innerHTML = 'Loading...';
+    // await fetchQuote();
 
-    const quote = await fetchQuote();
-    element.innerHTML = 'Tenemos data!!';
+    const quoteLabel = document.createElement('blockquote');
+    const autoLabel = document.createElement('h3');
+    const nextQuoteButton = document.createElement('button');
+    nextQuoteButton.innerText = 'Next Quote';
 
+    const renderQuote = ( data ) => {
+        quoteLabel.innerHTML = data.quote;
+        autoLabel.innerHTML = data.author;
+        element.replaceChildren ( quoteLabel, autoLabel, nextQuoteButton );
+    }
+
+
+    fetchQuote()
+        .then( renderQuote );
 }
