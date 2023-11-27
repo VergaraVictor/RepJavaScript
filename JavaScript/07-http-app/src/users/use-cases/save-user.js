@@ -16,6 +16,7 @@ export const saveUser = async( userLike ) => {
      }
 
      const updateUser = await createUser( user );
+     return updateUser;
 }
 
 
