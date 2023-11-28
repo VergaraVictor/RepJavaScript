@@ -1,5 +1,6 @@
 import { User } from '../models/user';
 import { userModelToLocalhost } from '../mappers/user-to-localhost.mapper';
+import { localhostUserToModel } from '../mappers/localhost-user.mapper';
 
 /**
  * 
@@ -21,7 +22,8 @@ export const saveUser = async( userLike ) => {
      }else {
         userUpdated = await createUser( userToSave );
      }
-
+     
+     return localhostUserToModel( userUpdated );
      
 }
 
