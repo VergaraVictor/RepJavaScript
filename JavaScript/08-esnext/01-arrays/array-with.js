@@ -1,5 +1,5 @@
 
-const superHeroes = [
+const state = [
     {
         id: 1,
         name:'Batman'
@@ -17,12 +17,27 @@ const superHeroes = [
         name:'Aquaman'
     },
 ];
-// antes era asi lo recomendable es el structuredClone
-// const array2 = JSON.parse( JSON.stringify(superHeroes))
 
-const superHeroesCopy = structuredClone(superHeroes);
+const index = 1;
+const newName = 'Green Lantern';
 
-superHeroesCopy[0].name = 'Green Lantern'
+// Asi era antes sin el nuevo arreglo with
+// const newState = state.map( (hero, i) => {
 
-console.table( superHeroes );
-console.table(superHeroesCopy);
+//     if ( i === index ) {
+//         hero.name = newName;
+//     }
+
+//     return {...hero};    
+// });
+const newState = state.with(index, {
+    ...state.at(index),
+    name: newName
+});
+
+state[0].name = 'Volcan Negro';
+
+console.table(newState);
+
+console.log('El último: ', state.at(-1));
+
